@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>There Is No Passion</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: #111;
+      color: #f5f5f5;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+
+    #question {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 0 16px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: clamp(1.75rem, 5vw, 3.5rem);
+      font-weight: 700;
+      max-width: 18ch;
+      line-height: 1.2;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    button {
+      font: inherit;
+      font-size: 1.25rem;
+      font-weight: 600;
+      padding: 0.8rem 2.5rem;
+      border: 2px solid #f5f5f5;
+      border-radius: 999px;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    button:hover,
+    button:focus-visible {
+      background: #f5f5f5;
+      color: #111;
+      outline: none;
+    }
+
+    #video {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      background: #000;
+      display: none;
+    }
+
+    body.playing #question { display: none; }
+    body.playing #video { display: block; }
+  </style>
+</head>
+<body>
+  <main id="question">
+    <h1>are you satisfied with the work you did today?</h1>
+    <div class="buttons">
+      <button id="yes" type="button">Yes</button>
+      <button id="no" type="button">No</button>
+    </div>
+  </main>
+
+  <!-- Drop the video file next to this page as video.mp4 -->
+  <video id="video" src="video.mp4" playsinline preload="auto"></video>
+
+  <script>
+    const video = document.getElementById('video');
+
+    document.getElementById('no').addEventListener('click', () => {
+      document.body.classList.add('playing');
+      video.currentTime = 0;
+      video.play();
+    });
+  </script>
+</body>
+</html>
