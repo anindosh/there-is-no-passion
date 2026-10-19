@@ -62,7 +62,7 @@
       inset: 0;
       width: 100vw;
       height: 100vh;
-      object-fit: cover;
+      object-fit: contain;
       background: #000;
       display: none;
     }
@@ -80,8 +80,10 @@
     </div>
   </main>
 
-  <!-- Drop the video file next to this page as video.mp4 -->
-  <video id="video" src="video.mp4" playsinline preload="auto"></video>
+  <video id="video" playsinline preload="auto">
+    <source src="video.webm" type="video/webm">
+    <source src="video.mp4" type="video/mp4">
+  </video>
 
   <script>
     const video = document.getElementById('video');
